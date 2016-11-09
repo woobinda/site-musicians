@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class = 'container'>
+    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff;'><strong>{{title}}</strong></h1>
+{% include 'musicians/musicians_filters.html' %}
+
+    <div class="my_content col-md-8" style='background-color:#009999; padding-bottom: 0px'>
+    <form action="." method="post" class="form-horisontal" enctype="multipart/form-data" role="form" style='font-size: 16px;'>
+	    <div class="form-group"><i>
+	    	<br>
+	    	{% csrf_token %}
+	    	<fieldset>
+	    	{{ form.as_table }}
+	    	</fieldset>
+	    	<br></i>
+	    	<p><button type="submit" class="btn btn-default">Create musician</button></p>
+	    </div>
+    </form>
+    </div>
+</div>
+{% endblock content%}

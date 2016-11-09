@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = 'container'>
+    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff;'><strong>{{title}}</strong></h1>
+
+    <strong>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3 my_filter" style='text-align: right; padding: 5px; margin-top:-5px'>
+            {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                    <img src='/static/shop_cart.png' width="40" height="40">
+                    <a style='color:green; font-size: 18px' href="{% url "cart:cart_detail" %}">
+                        {{ total_items }} item{{ total_items|pluralize }}:
+                        ${{ cart.get_total_price }}
+                    </a>
+                {% else %}
+                    <img src='/static/shop_cart.png' width="40" height="40" style='color:green'>&nbsp
+                    <a style='color:yellow; font-size: 18px'><strong>Your cart is empty</strong>
+                    </a>
+                {% endif %}               
+            {% endwith %}
+        </div>     
+    </strong>
+    <div class='col-md-4'></div>
+    <div class='my_content col-md-8 row' style='padding-bottom: 10px; margin-left: 0px; margin-right: 0px';>
+
+        <div class="order-info" style='margin-top: 40px; margin-right: 25px; background-color: #4db8ff;'>
+            <h3 style='text-align:center; color:#990099;'>Your order</h3>
+            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+            <ul>
+                {% for item in cart %}
+                    <li>{{ item.quantity }}x {{ item.product.name }} <span style='color:rgb(255,255,0)'>${{ item.total_price }}</span></li><hr>
+                {% endfor %}
+                {% if cart.coupon %}
+                    <li>
+                        Coupon №{{ cart.coupon.code }}<br>
+                        ({{ cart.coupon.discount }}% off)
+                        <span style='color:#dc1616;'>- ${{ cart.get_discount|floatformat:"2" }}</span><hr>
+                    </li>
+                {% endif %}     
+            </ul>
+            <h3 style='text-align:right; color:#4d4d00;'>
+            Total: ${{ cart.get_total_price_after_discount|floatformat:"2" }}</h3>
+        </div>
+
+        <form action="." method="post" class="order-form" style='margin-top: 15px;'>
+            {{ form.as_p }}
+            <p><input type="submit" value="Place order"></p>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+{% endblock content%}

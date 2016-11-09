@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class = 'container'>
+    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff'><strong>{{title}}</strong></h1>
+    {% include 'blog/blog_filters.html' %}
+
+    <div class="my_content col-md-12" style='padding-bottom: 15px;'>
+        <h4 style='font-size: 16px; padding-left: 15px; padding-top: 10px; margin-bottom: -5px'>
+            <i>Published at <a style='color:blue'> {{article.publish_date|date:"m.d.Y" }}</a></i>&nbsp <strong>|</strong>&nbsp  
+            <i>by <a style='color:green'><strong>{{article.owner}}</strong></a></i>&nbsp <strong>|</strong>&nbsp
+            <i><a style='color:black'>views: <a style="color:red">{{article.views}}</a></a></i>
+        </h4>
+            <br style="height:1px; border:none; background-color:#222;" />
+        <div class='col-md-12' style='text-align: justify-all; margin-top: -10px; border: 4px groove black; padding-bottom: 10px;'>
+        <i>{{article.content|safe}}</i>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block second %}
+<div class = 'container'>
+    <h1 class="my_title col-md-12" style='color:#00ccff; border: 2px solid #00ccff'><strong>Comments:</strong></h1>
+    <div class="my_content col-md-12" style='text-align: justify; padding-bottom: 15px;'>
+        <h4 style='text-align:left; font-size: 16px; padding-left: 15px;padding-top: 20px; margin-bottom: -10px'></h4>
+        <div id="comments">
+            {% if comment_tree %}
+                {% include "blog/comments.html" with comments=comment_tree %}
+            {% else %}
+                <div class='h4' style='text-align: center; margin-right: -30px'><strong>There are no comments present</strong>
+                <hr style="height:2px; border:none; background-color:#222;"/></div>
+            {% endif %}
+
+            <link rel="stylesheet" href="{% static "css/main.css" %}">
+                {% if user.is_authenticated %}
+                    <form id="postcomment" method="post" style='padding-left:30px; font-size: 16px'>
+                        {% csrf_token %}
+                        {{ form.as_table }}
+                        <br>
+                        <input class="btn" value="Create Comment" type='submit' style='margin-top: 5px;'>
+                    </form>
+                {% else %}
+                    <div class='h4' style='text-align: center; margin-right: -30px'>
+                        <hr style="height:2px; border:none;color:#333; background-color:#333;" />
+                        <br><strong>To leave a comment you must be authenticated</strong>
+                    </div><br>
+                {% endif %}
+
+                <link rel="stylesheet" href="{% static "css/main.css" %}">
+                <script src="{% static "js/vendor/jquery-1.11.2.min.js" %}"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#comments").on("click", ".reply", function(event){
+                            event.preventDefault();
+                            var form = $("#postcomment");
+                            form.find('.parent').val($(this).parent().parent().attr('id'));
+                            $(this).parent().append(form);
+                        });
+                    });
+                </script>
+        </div>
+    </div>
+</div>
+{% endblock second %}

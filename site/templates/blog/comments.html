@@ -1,0 +1,24 @@
+{% load humanize %}
+
+<ul class="comment-list" style='padding-left:30px;'>
+{% for comment in comments %}
+    {% if comment.user %}
+        <li id="{{comment.id}}" class="comment" style="margin-left:{{comment.depth|add:comment.depth}}em;"><p class="poster"><span class="user">
+        {% if comment.user.get_full_name %}
+            <i>{{comment.user.get_full_name}}</i>
+        {% if comment.parent %}
+            said to <i>{{comment.parent.user.get_full_name}}</i>
+        {% endif%}
+    {% else %}
+        {{comment.user.username}}
+    {% endif %}
+        </span> - {{comment.modified_at|naturaltime}}
+        </p><h4 class="com"><p><i style='font-size: 14px'>{{comment.content|safe}}</i></p></h4><p><a href="" class="reply"><i>reply</i></a></p></li>
+    {% elif comment.name %}
+        <li id="{{comment.id}}" class="comment" style="margin-left:{{comment.depth|add:comment.depth}}em;"><p class="poster">{% if comment.website %}<a href="{{comment.website}}">{{comment.name}}</a>{% else %}{{comment.name}}{% endif %} - {{comment.modified_at|naturaltime}}</p><p><i>{{comment.content|safe}}</i></p><p><a href="" class="reply"><i>reply</i></a></p></li>
+    {% else %}
+        <li id="{{comment.id}}" class="comment" style="margin-left:{{comment.depth|add:comment.depth}}em;"><p class="poster"><hr>Anonymous - {{comment.modified_at|naturaltime}}</p><p>{{comment.content|safe}}</p><p><a href="" class="reply"><i>reply</i></a></p></p></li>
+    {% endif %}
+    {% include "blog/comments.html" with comments=comment.child_set.all %}
+{% endfor %}
+</ul>

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = 'container'>
+    <h1 class="my_title col-md-12" style='color:orange; text-align: center; border: 2px solid #00ccff;'><strong>{{title}}</strong></h1>
+
+<strong>
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3 my_filter" style='text-align: right; padding: 5px; margin-top:-5px'>
+        {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+                <img src='/static/shop_cart.png' width="40" height="40">
+                <a style='color:green; font-size: 18px' href="{% url "cart:cart_detail" %}">
+                    {{ total_items }} item{{ total_items|pluralize }}:
+                    ${{ cart.get_total_price }}
+                </a>
+            {% else %}
+                <img src='/static/shop_cart.png' width="40" height="40" style='color:green'>&nbsp
+                <a style='color:yellow; font-size: 18px'><strong>Your cart is empty</strong>
+                </a>
+            {% endif %}               
+        {% endwith %}
+    </div>     
+</strong>
+
+	<div class='my_content col-md-12'>
+	    <h1 style='color:purple; text-align: center'><i>Thank you!</i></h1>
+    	<p style='text-align: center'><i>Your order has been successfully completed. Your order number is <strong>{{ order.id }}</strong>.</i></p>
+
+	</div>
+</div>
+{% endblock content %}

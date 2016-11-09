@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.jumbotron h1 {
+    color: rgba(200, 50, 255, 1);
+}
+
+.row1 {
+    background-color: red;
+} 
+
+.row2 {
+    background-color: green;
+}
+
+.my_sidebar {
+    margin-bottom: -20px;
+}
+
+.my_title {
+    border: 2px solid white;
+    background-color: #555;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.my_content {
+    padding-bottom: 15px;
+    font-size: 20px;
+    background-color: #ccebff;
+    border: 3px solid #222;
+}
+
+.product:hover {
+    background-color: #ccffb3;
+}
+
+.my_filter:hover {
+    color:orange;
+    cursor:pointer;
+}
+
+.my_footer {   
+    padding-top: 20px;
+    padding-bottom: 40px;
+    background-color: #222;
+}
+
+h3 {
+    color:orange;
+}
+
+#comments a {
+            font-weight: bold;
+            color: green;
+            text-decoration: none;
+        }
+ 
+#comments a:hover {
+            text-decoration: underline;
+        }
+        
+#comments {
+            padding-right: 30px;
+            border: 4px ridge black;
+            padding-top: 10px;
+            padding-bottom: 10px;'
+        }
+        
+#comments li {
+               list-style-type: none;
+            }
+        
+.poster {
+            font-size: 12px;
+            color: #0099ff;
+            margin-bottom:-10px;
+            padding-top: 5px;
+        }
+        
+#postcomment ul {
+            padding-left: 40px;
+            list-style-type: none;
+        }
+        
+#postcomment ul li {
+                list-style-type:  none;
+                padding-bottom: 15px;
+            }
+                
+#postcomment label {
+            width: 34px;
+            display: block;
+        }
+        
+.comment {
+            font-size: 12px;
+            background: #d0d0e1;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 30px;
+            color: #000000;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            padding-bottom: 2px;
+        }
+
+ul.errorlist {
+   float:top;
+   color:#ff0000;
+   clear:both;
+   font-size:15px;
+   margin:5px; 
+   padding:5px;
+}
+
+html, body {height: 100%}
+
+#wrapper:after {
+    content: "";
+    display: block;
+}
+
+footer, #wrapper:after {height: 50px}
+
+#wrapper {
+    min-height: 92%;
+    margin-bottom: -10px;
+}
+
+a.button, input[type="submit"] {
+    color:#fff;
+    background:#5993bb;
+    border-radius:4px;
+    padding:10px 15px;
+    font-size:14px;
+    border:0;
+}
+
+
+table {
+    width:100%;
+    border-spacing:0;
+    border-collapse: collapse; 
+}
+
+table th, table td {
+    text-align:left;
+    font-size:20px;
+    padding:5px;
+    margin:0;
+    text-align:center;
+}
+
+
+
+tbody tr.subtotal {
+    background:#ffd480;
+}
+
+thead th, tbody tr.total {
+    background:#5993bb;
+    color:#fff;
+    font-weight:bold;
+}
+
+table.cart {
+    margin-bottom:0px;
+}
+
+table.cart img {
+    width:220px;
+}
+
+tbody td.num {
+    text-align:right;
+}
+
+td input[type="submit"] {
+    font-size:15px;
+    padding:6px 15px;
+}
+
+form p label, form p input {
+    float:left;
+    clear:both;
+}
+
+form p label {
+    font-size:14px;
+    padding-bottom:4px;
+}
+
+form p input {
+    width:300px;
+    font-size:14px;
+    margin-bottom:10px;
+    padding:10px 12px;
+    border:1;
+    background:#e6f9ff;
+    color:#666;
+    border-radius:4px;
+}
+
+.order-form {
+    float:left;
+}
+
+.order-info {
+    float:right;
+    width:300px;
+    background:#ccccff;
+    padding:5px 10px;
+    color:#333;
+    border-bottom:0px solid #5993bb;
+    margin-bottom: 30px; 
+}
+
+.order-info h3 {
+    color:#5993bb;
+}
+
+.order-info ul li {
+    margin:0;
+    padding:0;
+    font-size:14px;
+}
+
+.order-info p {
+    font-weight:bold;
+    float:right;
+}
+
+.order-info span {
+    float:right;
+}
+
+img {
+    position: relative;
+}
