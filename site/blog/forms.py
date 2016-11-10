@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
         fields = ('content',)
 
     def __init__(self, *args, **kwargs):
-        self.article = kwargs.pop('article')   # the blog entry instance
+        self.article = kwargs.pop('article')
         super(CommentForm, self).__init__(*args, **kwargs)
 
     def save(self, *args, **kwargs):

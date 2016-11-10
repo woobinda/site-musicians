@@ -1,7 +1,6 @@
 from django.views.generic import FormView, RedirectView, DetailView, UpdateView
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from .forms import RegistrationForm, EditProfileForm
 from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login, logout as auth_logout
 from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
@@ -9,8 +8,10 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.forms import AuthenticationForm
-from .models import UserProfile
 from django.core.exceptions import PermissionDenied
+
+from .models import UserProfile
+from .forms import RegistrationForm, EditProfileForm
 
 
 class RegistrationView(FormView):
@@ -103,4 +104,5 @@ class EditProfile(UpdateView):
         return UserProfile.objects.get_or_create(user=self.request.user)[0]
 
     def get_success_url(self):
-        return reverse("userprofiles:profile", kwargs={"slug": self.request.user})
+        return reverse("userprofiles:profile",
+                       kwargs={"slug": self.request.user})

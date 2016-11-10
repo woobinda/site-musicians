@@ -1,15 +1,18 @@
 <strong>
-    <div class="col-md-2 my_filter" style='text-align: center; background-color: green; padding: 5px; margin-top: 15px'>
+    <div class="col-md-2 my_filter" style='text-align: center; background-color: green;
+            padding: 5px; margin-top: 15px'>
         <a href ="{% url 'musicians:index'%}" style='color:black'>All Musicians&nbsp</a></li>
     </div>
 
     <div class="col-md-2" style='text-align: center; background-color: red; margin-top: 15px'>
-        <div data-toggle="dropdown" class="dropdown-toggle my_filter" style="padding: 5px;">Instrument &nbsp<b class='caret'></b></div>
-            <ul class="dropdown-menu dropdown-menu-right">
-                {% for instrument in instrument_list %}
-            <li><a href ="{% url 'musicians:musicians_by_instrument' instrument.slug %}">{{ instrument.name }}</a></li>
-                {% endfor %}
-            </ul>
+        <div data-toggle="dropdown" class="dropdown-toggle my_filter" style="padding: 5px;">
+        Instrument &nbsp<b class='caret'></b></div>
+        <ul class="dropdown-menu dropdown-menu-right">
+            {% for instrument in instrument_list %}
+                <li><a href ="{% url 'musicians:musicians_by_instrument' instrument.slug %}">
+                {{ instrument.name }}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 
     <div class="col-md-2" style='text-align: center; background-color: yellow; margin-top: 15px;'>
@@ -17,10 +20,10 @@
             Style &nbsp<b class='caret'></b>
         </div>
         <ul class="dropdown-menu dropdown-menu-right">
-        {% for style in style_list %}
-            <li><a href ="{% url 'musicians:musicians_by_playing_style' style.slug %}">#{{ style.name }}</a></li>
-        {% endfor %}
+            {% for style in style_list %}
+                <li><a href ="{% url 'musicians:musicians_by_playing_style' style.slug %}">
+                #{{ style.name }}</a></li>
+            {% endfor %}
         </ul>
     </div>
 </strong>
-

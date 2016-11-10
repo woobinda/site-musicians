@@ -2,21 +2,21 @@
 
 {% block content %}
 <div class = 'container'>
-    <h1 class="my_title col-md-12" style='color:white; text-align: center; border: 2px solid white'><strong>{{title}}</strong></h1>
+    <h1 class="my_title col-md-12" style='color:white; text-align: center; border: 2px solid white'>
+    <strong>{{title}}</strong></h1>
  	<div class='col-md-3'></div>
  	<div class='col md-3'></div>
 
-    <div class="my_content col-md-6" style='margin-top: 20px; padding-top: 15px; background-color:#009999; padding-bottom: 0px'>
-    <form action="." method="post" class="form-horisontal" role="form" style='font-size: 16px;'>
-	    <div class="form-group">
-	    	{% csrf_token %}
-	    	<fieldset>
-	    	{{ form.as_table }}
-	    	</fieldset>
-	    	<br>
-	    	<p><button type="submit" class="btn btn-default">Create account</button></p>
-	    </div>
-    </form>
+    <div class="my_content col-md-6" style='margin-top: 20px; padding-top: 15px;
+	    	background-color:#009999; padding-bottom: 0px'>
+	    <form action="." method="post" class="form-horisontal" role="form" style='font-size: 16px;'>
+		    <div class="form-group">
+		    	{% csrf_token %}
+		    	<fieldset>{{ form.as_table }}</fieldset>
+		    	<br>
+		    	<p><button type="submit" class="btn btn-default">Create account</button></p>
+		    </div>
+	    </form>
     </div>
 </div>
 {% endblock content%}

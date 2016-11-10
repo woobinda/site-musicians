@@ -2,20 +2,24 @@
 {% block content %}
 
 <div class = 'container'>
-        <h1 class="my_title col-md-12" style='color:#ffff66; text-align: center; border: 2px solid #ffff66;'><strong>{{title}}</strong></h1>
+    <h1 class="my_title col-md-12" style='color:#ffff66; text-align: center;
+            border: 2px solid #ffff66;'>
+    <strong>{{title}}</strong></h1>
 
     {% include 'userprofiles/profile_filters.html' %}
 
-        <div class="my_content col-md-8" style='border: 3px groove black; padding-bottom: 5px'>
-        <h4 style='text-align:left; color:#001a33; font-size: 16px; padding-left: 10px;padding-top: 10px; margin-bottom: -10px'><a style='color:green'>
-            <strong>{{user.username}}'s</strong></a> profile</h4>
-        <hr style="height:2px; border:none; background-color:#222;" />
+    <div class="my_content col-md-8" style='border: 3px groove black; padding-bottom: 5px'>
+    <h4 style='text-align:left; color:#001a33; font-size: 16px; padding-left: 10px;
+                 padding-top: 10px; margin-bottom: -10px'><a style='color:green'>
+        <strong>{{user.username}}'s</strong></a> profile</h4>
+    <hr style="height:2px; border:none; background-color:#222;" />
 
-		<form method="post" action="" enctype="multipart/form-data" style='font-size: 16px;'><i>
-		  {% csrf_token %}
-		  {{ form }}
-          <br></i>
-		  <p><button class="btn btn-default" type="submit"><strong style='color:green'> Accept Changes </strong></button></p>
+		<form method="post" action="" enctype="multipart/form-data" style='font-size: 16px;'>
+    	    {% csrf_token %}
+            <i>{{ form }}</i>
+            <br>
+    		<p><button class="btn btn-default" type="submit">
+            <strong style='color:green'>Accept Changes</strong></button></p>
 		</form>
 	</div> 
 </div>

@@ -1,14 +1,15 @@
 <strong>
     <div class="col-md-2 my_filter" style='text-align: center; background-color: green; padding: 5px; margin-top: 15px'>
-        <a href ="{% url 'blog:index'%}" style='color:black'>All Articles&nbsp</a></li>
+    <a href ="{% url 'blog:index'%}" style='color:black'>All Articles&nbsp</a></li>
     </div>
 
     <div class="col-md-2" style='text-align: center; background-color: red; margin-top: 15px'>
-        <div data-toggle="dropdown" class="dropdown-toggle my_filter" style="padding: 5px;">Category &nbsp<b class='caret'></b></div>
+    <div data-toggle="dropdown" class="dropdown-toggle my_filter" style="padding: 5px;">
+        Category &nbsp<b class='caret'></b></div>
         <ul class="dropdown-menu dropdown-menu-right">
-            {% for category in category_list %}
-                <li><a href ="{% url 'blog:blog_by_category' category.slug %}">{{ category.name}}</a></li>
-            {% endfor %}
+        {% for category in category_list %}
+            <li><a href ="{% url 'blog:blog_by_category' category.slug %}">{{ category.name}}</a></li>
+        {% endfor %}
         </ul>
     </div>
 

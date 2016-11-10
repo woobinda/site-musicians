@@ -25,10 +25,13 @@ def blog_view(request, categoryslug=None, tagslug=None):
                 count += 1
         return count
 
-    return render(request, 'blog/blog_index.html',
-                  {'title': title, 'blog_list': blog_list, 'category_list': category_list, 'tag_list': tag_list,
-                   'count': count()})
-
+    return render(request, 'blog/blog_index.html', {'title': title,
+                                                    'tag_list': tag_list,
+                                                    'category_list': category_list,
+                                                    'blog_list': blog_list,
+                                                    'count': count()
+                                                    })
+                                                    
 
 class ArticleDetail(CreateView):
     model = Article
@@ -57,8 +60,8 @@ class ArticleDetail(CreateView):
         d = super(ArticleDetail, self).get_context_data(**kwargs)
         articlec = self.get_object()
         d['title'] = Article.objects.get(title=articlec)
-        d['comment_tree'] = Comment.objects.select_related().filter(article=articlec).filter(parent=None).order_by(
-            'path')
+        d['comment_tree'] = Comment.objects.select_related().filter(
+            article=articlec).filter(parent=None).order_by('path')
         d['category_list'] = category_list
         d['tag_list'] = tag_list
         d['article'] = articlec

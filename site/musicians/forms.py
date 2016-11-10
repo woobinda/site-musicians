@@ -32,7 +32,7 @@ class AddVideoForm(forms.ModelForm):
     class Meta:
         model = VideoUrl
         fields = '__all__'
-        exclude = ['host', ]
+        exclude = ['host',]
 
     def __init__(self, *args, **kwargs):
         super(AddVideoForm, self).__init__(*args, **kwargs)

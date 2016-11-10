@@ -45,7 +45,7 @@ class Article(models.Model):
     owner = models.ForeignKey(User, null=True, related_name='articles')
     views = models.IntegerField(default=0, verbose_name='views')
     publish_date = models.DateTimeField(auto_now=True, editable=False,
-                                        help_text="Please use the following format: <em>YYYY-MM-DD</em>.")
+                                        help_text="format: <em>YYYY-MM-DD</em>.")
     created_date = models.DateTimeField(auto_now_add=True, editable=False, )
 
     def was_published_recently(self):

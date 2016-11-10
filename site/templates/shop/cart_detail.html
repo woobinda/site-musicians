@@ -2,7 +2,8 @@
 
 {% block content %}
 <div class = 'container'>
-    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff;'><strong>{{title}}</strong></h1>
+    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff;'>
+    <strong>{{title}}</strong></h1>
     
 <strong>
     <div class="col-md-2"></div>
@@ -15,12 +16,10 @@
                 <img src='/static/shop_cart.png' width="40" height="40">
                 <a style='color:green; font-size: 18px' href="{% url "cart:cart_detail" %}">
                     {{ total_items }} item{{ total_items|pluralize }}:
-                    ${{ cart.get_total_price }}
-                </a>
+                    ${{ cart.get_total_price }}</a>
             {% else %}
                 <img src='/static/shop_cart.png' width="40" height="40" style='color:green'>&nbsp
-                <a style='color:yellow; font-size: 18px'><strong>Your cart is empty</strong>
-                </a>
+                <a style='color:yellow; font-size: 18px'><strong>Your cart is empty</strong></a>
             {% endif %}               
         {% endwith %}
     </div>     
@@ -44,7 +43,7 @@
             <tr style='border: 2px solid black'>
                 <td>
                     <a href="{{ product.get_absolute_url }}">
-                        <img src="/media/{{ product.image }}" width="240" height="240">
+                    <img src="/media/{{ product.image }}" width="240" height="240">
                     </a>
                 </td>
                 <td>
@@ -81,9 +80,11 @@
             </tr>
         	{% endif %}
         	<tr class="total">
-            	<td><h3 class='order' style='color:yellow'><strong>Total</strong></h3></td>
+            	<td><h3 class='order' style='color:yellow'>
+                <strong>Total</strong></h3></td>
             	<td colspan="4"></td>
-            	<td class="num"><h3 class='order' style='color:yellow;'><strong>${{ cart.get_total_price_after_discount|floatformat:"2" }}</strong></h3></td>
+            	<td class="num"><h3 class='order' style='color:yellow;'>
+                <strong>${{ cart.get_total_price_after_discount|floatformat:"2" }}</strong></h3></td>
         	</tr>
         </tbody>
     </table>

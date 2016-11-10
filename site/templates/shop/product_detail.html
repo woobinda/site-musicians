@@ -2,13 +2,16 @@
 
 {% block content %}
 <div class = 'container'>
-    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff;'><strong>{{title}}</strong></h1>
+    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff;'>
+    <strong>{{title}}</strong></h1>
 
 {% include 'shop/shop_filters.html' %}
 
     <div class="my_content col-md-12">
-        <h4 style='text-align:left; color:#001a33; font-size: 16px; padding-left: 15px;padding-top: 10px; margin-bottom: -10px'>
-        <i>Category:<strong><a style='color:green'> {{product.category}}</a></strong></i></h4>
+        <h4 style='text-align:left; color:#001a33; font-size: 16px; padding-left: 15px;
+                padding-top: 10px; margin-bottom: -10px'>
+        <i>Category:<strong><a style='color:green'>
+         {{product.category}}</a></strong></i></h4>
         <hr style="height:2px; border:none; background-color:#222;" />
     <div class = 'col-md-6 container' style='text-align: center'>
     	<img src='/media/{{ product.image }}' width="500" height="500" style='border: 4px solid #993366;'> 
@@ -25,35 +28,39 @@
                     <input type="submit" value="Add to cart">
             	</form>
         	{% else %}
-            	<i>Нет в наличии</i><br>
-        	{% endif %}<hr>
+            	<i>Not available</i><br>
+        	{% endif %}
+            <hr>
 	    	<h4 style="text-align: justify-all; font-size: 14px"><i>{{product.description|linebreaks}}</i></h4>
             <hr>
-            <a class="btn btn-info" href="{% url 'shop:product_list_by_category' product.category.slug %}" role="button"><strong>{{ button|safe }}</strong></a>
+            <a class="btn btn-info" href="{% url 'shop:product_list_by_category' product.category.slug %}" role="button">
+            <strong>{{ button|safe }}</strong></a>
 	    </div>
 
         <div class='col-md-12' style='text-align: center'>
             {% if similar_products%}
                 <hr style="height:3px;border:none; background-color:#222;" />
-                <h2 style='color:#0099cc; text-align: center'><strong>Similar Products:</strong></h2>
+                <h2 style='color:#0099cc; text-align: center'>
+                <strong>Similar Products:</strong></h2>
                 <hr style="height:3px;border:none; background-color:#222;" />
   
-        
             {% for product in similar_products %}
                 <a href="{{ product.get_absolute_url }}">
                 <div class="product col-sm-6 col-md-4 col-lg-3"><br>
-                    <img src='/media/{{ product.image }}' width="240" height="240" style='border: 4px solid yellow;'>
+                    <img src='/media/{{ product.image }}' width="240" height="240"
+                            style='border: 4px solid yellow;'>
                     <h4 style="color:green; font-size:16px">{{product.full_name}}</h4>
                 </div></a>
             {% endfor %}
             {% else %}
                 <div>
                     <hr style="height:3px;border:none; background-color:#222;" />
-                    <div class='h3' style='text-align: center; color:#0099cc;'><strong>There are no similar products present.</strong></div>
+                    <div class='h3' style='text-align: center; color:#0099cc;'>
+                    <strong>There are no similar products present.</strong></div>
                     <hr style="height:3px;border:none; background-color:#222;" />
                 </div>
             {% endif %}
-         </div>
-      </div>
+        </div>
+    </div>
 </div>
 {% endblock content%}

@@ -20,7 +20,8 @@ def product_list(request, category_slug=None):
         return count
 
     return render(request, 'shop/shop_index.html',
-                  {'products': products, 'category_list': category_list, 'title': title, 'count': products_count()})
+                  {'products': products, 'category_list': category_list,
+                   'title': title, 'count': products_count()})
 
 
 def product_detail(request, category_slug, id, slug):
@@ -31,8 +32,8 @@ def product_detail(request, category_slug, id, slug):
     end_price = product.price * 130 / 100
     cart_product_form = CartAddProductForm(
         request.POST if request.method == 'POST' else None, product=product)
-    similar_products = Product.objects.filter(category=category,
-                                              price__range=(start_price, end_price)).exclude(id=id)[:4]
+    similar_products = Product.objects.filter(
+        category=category, price__range=(start_price, end_price)).exclude(id=id)[:4]
     title = product.name
     button = '<<< Back to %s' % category.name
 

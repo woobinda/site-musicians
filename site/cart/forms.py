@@ -17,7 +17,6 @@ class CartAddProductForm(forms.Form):
     def clean_quantity(self):
         data = self.cleaned_data['quantity']
         if not self.product.is_available(quantity=data):
-            raise forms.ValidationError("Sorry, but only %(amount)s is available.", code='invalid', params={
-                "amount": self.product.stock,
-            })
+            raise forms.ValidationError("Sorry, but only %(amount)s is available.",
+                                        code='invalid', params={"amount": self.product.stock, })
         return data

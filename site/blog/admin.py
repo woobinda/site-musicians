@@ -55,10 +55,10 @@ class ArticleAdmin(admin.ModelAdmin):
     readonly_fields = ('publish_date', 'created_date')
 
     fieldsets = [
-        ('Item',             {'fields': [
-        ('title', 'slug',), 'icon', 'category', 'content']}),
-        ('Date information', {'fields': [
-        ('publish_date', 'created_date')], 'classes': ['collapse']}),
+        ('Item',             {'fields': [('title', 'slug'),
+                                         'icon', 'category', 'content']}),
+        ('Date information', {'fields': [('publish_date', 'created_date')],
+                              'classes': ['collapse']}),
         ('Related tags',     {'fields': ['tags']}),
         ('Metas',            {'fields': [('status', 'views', 'owner')]}),
     ]

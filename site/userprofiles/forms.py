@@ -5,8 +5,9 @@ from .models import UserProfile
 
 class RegistrationForm(forms.Form):
     username = forms.RegexField(label="*  Username", max_length=30, min_length=5,
-                                regex=r'^[\w.-]+$', error_messages={
-                                    'invalid': 'This value may contain only letters, numbers and ./-/_ characters.'})
+                                regex=r'^[\w.-]+$',
+                                error_messages={
+                                    'invalid': 'Contain only letters, numbers and ./-/_ characters.'})
     email = forms.EmailField(label='*  E-mail')
     password = forms.CharField(label='*  Password', min_length=8,
                                widget=forms.PasswordInput(render_value=False))
@@ -48,7 +49,7 @@ class RegistrationForm(forms.Form):
         data = self.cleaned_data['username']
         try:
             user = User.objects.get(username=data)
-        except:
+        except Exception:
             return data
         else:
             raise forms.ValidationError(

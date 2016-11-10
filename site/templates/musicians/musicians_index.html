@@ -2,32 +2,40 @@
 
 {% block content %}
 <div class = 'container'>
-    <h1 class="my_title col-md-12" style='color:#00ccff; text-align: center; border: 2px solid #00ccff'><strong>{{title}}</strong></h1>
+    <h1 class="my_title col-md-12" style='color:#00ccff;
+            text-align: center; border: 2px solid #00ccff'>
+    <strong>{{title}}</strong></h1>
 
 {% include 'musicians/musicians_filters.html' %}
     {% if user.is_authenticated %}
-    <div class="col-md-2 my_filter" style='text-align: center; background-color: #0099cc; padding: 5px; margin-top: 15px'>
-        <a href ="{% url 'musicians:add_musician' %}" style='color:black'><strong>Add Musician</strong>&nbsp</a></li>
-    </div>
+        <div class="col-md-2 my_filter" style='text-align: center;
+            background-color: #0099cc; padding: 5px; margin-top: 15px'>
+            <a href ="{% url 'musicians:add_musician' %}" style='color:black'>
+            <strong>Add Musician</strong>&nbsp</a></li>
+        </div>
     {% endif %}
 
     <div class="my_content col-md-12" style='text-align: center; padding-bottom: 15px'>
-        {% if count %}
-            <h4 style='text-align:left; color:#001a33; font-size: 16px; padding-left: 15px;padding-top: 10px; margin-bottom: -10px'>
-            <i><strong>{{count}}</strong> musicians are present</i></h4>
-            <hr style="height:2px; border:none; background-color:#222;" />
-        {% else %}
-            <hr style="height:2px;border:none; background-color:#222;" />
-            <div class='h3' style='text-align: center'><strong>There are no musicians present.</strong></div>
-            <hr style="height:2px;border:none; background-color:#222;" />
-        {% endif %}
+    {% if count %}
+        <h4 style='text-align:left; color:#001a33; font-size: 16px; padding-left: 15px;
+                 padding-top: 10px; margin-bottom: -10px'>
+        <i><strong>{{count}}</strong> musicians are present</i></h4>
+        <hr style="height:2px; border:none; background-color:#222;" />
+    {% else %}
+        <hr style="height:2px;border:none; background-color:#222;" />
+        <div class='h3' style='text-align: center'>
+        <strong>There are no musicians present.</strong></div>
+        <hr style="height:2px;border:none; background-color:#222;" />
+    {% endif %}
 
         <div class="row">
             {% for musician in musicians %}
                 <a href="{{ musician.get_absolute_url }}">
                 <div class="product col-sm-6 col-md-4 col-lg-3">
-                    <br><img src='/media/{{ musician.avatar }}' width="240" height="240" style='border: 4px solid yellow;'>
-                    <h4 style="color:green; font-size:16px;"><strong>{{musician.full_name}}</strong></h4>
+                    <br><img src='/media/{{ musician.avatar }}' width="240" height="240"
+                                style='border: 4px solid yellow;'>
+                    <h4 style="color:green; font-size:16px;">
+                    <strong>{{musician.full_name}}</strong></h4>
                 </div></a>
             {% endfor %}
         </div>

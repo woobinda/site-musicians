@@ -2,14 +2,19 @@
 
 {% block content %}
 <div class = 'container'>
-    <h1 class="my_title col-md-12" style='color:#ffff66; text-align: center; border: 2px solid #ffff66;'><strong>{{title}}</strong></h1>
+    <h1 class="my_title col-md-12" style='color:#ffff66; text-align: center;
+    		border: 2px solid #ffff66;'>
+    <strong>{{title}}</strong></h1>
 
 	{% include 'userprofiles/profile_filters.html' %}
 
-    <div class="my_content col-md-8" style='text-align: center; border: 4px groove black; padding-bottom: 20px'>
-        <h4 style='text-align:left; color:#001a33; font-size: 16px; padding-left: 10px;padding-top: 10px; '>
+    <div class="my_content col-md-8" style='text-align: center;
+    			border: 4px groove black; padding-bottom: 20px'>
+        <h4 style='text-align:left; color:#001a33; font-size: 16px;
+        		padding-left: 10px;padding-top: 10px; '>
         <a style='color:green'><strong>{{user.username}}'s </strong></a>profile</h4>
-		<div class = 'col-md-6' style='padding: 5px; text-align: center; border: 2px groove #222'>
+		<div class = 'col-md-6' style='padding: 5px; text-align: center;
+				 border: 2px groove #222'>
 		    {% if profile.profile_picture%}
 		        <img src='/media/{{ profile.profile_picture }}' width="345" height="345">
 		    {% else %}
@@ -20,11 +25,13 @@
 			<div class='col-md-6'>
 				<div>
 					Joined at<br>
-					<a style='color:green'>{{user.date_joined}}</a><hr style="height:1px; border:none; background-color:#222;" />
+					<a style='color:green'>{{user.date_joined}}</a><hr style="height:1px;
+								border:none; background-color:#222;" />
 				</div>
 			</div>
 
-			<div class ='col-md-2' style='font-size: 16px; text-align: justify; padding-right: 15px; color:#24478f'>
+			<div class ='col-md-2' style='font-size: 16px; text-align: justify;
+					padding-right: 15px; color:#24478f'>
 				Username:<br> 
 				Email:<br>
 				Company:<br>

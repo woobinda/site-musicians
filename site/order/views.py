@@ -25,8 +25,8 @@ def order_create(request):
                           price=item['price'],
                           quantity=item['quantity'])
 
-            cart.clear()  # clear the cart
-            order_created(order.id)  # launch task
+            cart.clear()
+            order_created(order.id)
 
             return render(request, 'shop/order_created.html', {'order': order,
                                                                'title': 'Successfully Created'})
